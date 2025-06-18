@@ -1,0 +1,482 @@
+/* Status badges */
+.status-indicators {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.status-badge {
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border: 1px solid;
+}
+
+.status-badge.entregar {
+  background: #dcfce7;
+  color: #166534;
+  border-color: #bbf7d0;
+}
+
+.status-badge.emitido {
+  background: #dbeafe;
+  color: #1e40af;
+  border-color: #bfdbfe;
+}
+
+.status-badge.mail {
+  background: #fef3c7;
+  color: #92400e;
+  border-color: #fde68a;
+}
+
+.status-badge.pending {
+  display: none;
+}
+
+/* Buttons */
+.action-buttons {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.action-buttons button {
+  padding: 0.375rem 0.75rem;
+  border: 1px solid;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.75rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn {
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px;
+  font-size: 0.9rem;
+}
+
+.btn-edit {
+  background: #ffffff;
+  color: #1e40af;
+  border-color: #bfdbfe;
+}
+
+.btn-edit:hover {
+  background: #dbeafe;
+}
+
+.btn-delete {
+  background: #ffffff;
+  color: #dc2626;
+  border-color: #fecaca;
+}
+
+.btn-delete:hover {
+  background: #fee2e2;
+}
+
+.btn-save {
+  background: #ffffff;
+  color: #166534;
+  border-color: #bbf7d0;
+}
+
+.btn-save:hover {
+  background: #dcfce7;
+}
+
+.btn-cancel {
+  background: #ffffff;
+  color: #6b7280;
+  border-color: #e5e7eb;
+}
+
+.btn-cancel:hover {
+  background: #f3f4f6;
+}
+
+.btn-primary { 
+  background-color: #007bff; 
+  color: white; 
+}
+
+.btn-success { 
+  background-color: #28a745; 
+  color: white; 
+}
+
+.btn-warning { 
+  background-color: #ffc107; 
+  color: #212529; 
+}
+
+.btn-danger { 
+  background-color: #dc3545; 
+  color: white; 
+}
+
+.btn-secondary { 
+  background-color: #6c757d; 
+  color: white; 
+}
+
+.btn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+/* User Manager Styles */
+.user-manager .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.add-user-form {
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+.add-user-form h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.form-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.admin-badge {
+  background-color: #007bff;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.user-badge {
+  background-color: #6c757d;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* Export section styling */
+.export-section {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  border-radius: 12px;
+  border: 1px solid #dee2e6;
+}
+
+.export-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.export-btn {
+  background: linear-gradient(135deg, #28a745, #20c997);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(40, 167, 69, 0.3);
+  align-self: flex-start;
+}
+
+.export-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #218838, #1da88a);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(40, 167, 69, 0.4);
+}
+
+.export-btn:disabled {
+  background: #6c757d;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.individual-exports {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.export-label {
+  font-weight: 600;
+  color: #495057;
+  margin-right: 1rem;
+}
+
+.export-btn-small {
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 1px 3px rgba(0, 123, 255, 0.3);
+}
+
+.export-btn-small:hover {
+  background: linear-gradient(135deg, #0056b3, #004085);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 123, 255, 0.4);
+}
+
+.export-btn-small .icon {
+  margin-right: 0.5rem;
+}
+
+/* Excel Import/Export Section */
+.excel-section {
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  border: 1px solid #dee2e6;
+}
+
+.excel-controls {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.import-controls {
+  position: relative;
+}
+
+/* Excel info collapsible - Fixed hover behavior */
+.excel-info {
+  background: white;
+  border-radius: 8px;
+  padding: 1rem;
+  border-left: 4px solid #007bff;
+}
+
+.excel-info .info-header {
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+  margin: -0.5rem -0.5rem 0 -0.5rem;
+  cursor: pointer;
+}
+
+.excel-info .info-header:hover {
+  background-color: #f8f9fa;
+}
+
+.excel-info p {
+  margin: 0 0 0.5rem 0;
+  color: #495057;
+  font-weight: 600;
+}
+
+.excel-info ul {
+  margin: 0;
+  padding-left: 1.5rem;
+  color: #6c757d;
+  animation: fadeIn 0.3s ease;
+}
+
+.excel-info li {
+  margin-bottom: 0.25rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    max-height: 0;
+  }
+  to {
+    opacity: 1;
+    max-height: 200px;
+  }
+}
+
+/* Prevent table hover effects from interfering with excel-info */
+.excel-info,
+.excel-info * {
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Enhanced street group hover effects - Fixed for proper grouping */
+.statistics-table tbody tr[data-street] {
+  transition: all 0.2s ease;
+}
+
+/* Individual row hover in statistics */
+.statistics-table tbody tr[data-street]:hover {
+  background: #e2e8f0 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+  position: relative;
+}
+
+/* JavaScript-enhanced group hover - lighter effect for group members */
+.street-group-hover {
+  background: #f1f5f9 !important;
+  /* Remove transform and box-shadow for group hover to prevent multiple shadows */
+  transform: none !important;
+  box-shadow: none !important;
+  transition: all 0.2s ease !important;
+}
+
+/* Only the street header gets enhanced styling during group hover */
+.street-group-hover .street-header {
+  background: #cbd5e1 !important;
+  font-weight: 600 !important;
+  /* Ensure no transform or shadow on street headers */
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Prevent street headers from having individual hover effects */
+.street-header:hover {
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Make action buttons more prominent on hover */
+.complaint-row-main:hover .action-buttons button,
+.distributors-table tr:hover .action-buttons button {
+  transform: scale(1.05);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+}
+
+/* Prevent conflicting hover effects on action buttons */
+.action-buttons button {
+  transition: all 0.2s ease;
+}
+
+.action-buttons button:hover {
+  transform: scale(1.1) !important;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25) !important;
+}
+
+/* Bulk edit enhancements for complaints */
+.bulk-edit-section {
+  background: #f0f9ff;
+  border: 1px solid #bae6fd;
+  padding: 1.5rem;
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+}
+
+.bulk-edit-section h3 {
+  margin-bottom: 1rem;
+  color: #0c4a6e;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.bulk-edit-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.bulk-edit-fields {
+  display: flex;
+  gap: 1rem;
+  align-items: start;
+  flex-wrap: wrap;
+}
+
+.bulk-edit-fields > div {
+  flex: 1;
+  min-width: 200px;
+}
+
+.bulk-edit-fields label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #374151;
+  font-size: 0.875rem;
+}
+
+.bulk-edit-fields input[type="text"] {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 0.875rem;
+}
+
+.bulk-edit-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.bulk-edit-actions .btn-delete {
+  background: #ffffff;
+  color: #dc2626;
+  border-color: #fecaca;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  border: 1px solid;
+}
+
+.bulk-edit-actions .btn-delete:hover {
+  background: #fee2e2;
+}
+
+.table-controls {
+  margin-bottom: 1rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.selection-info {
+  color: #0c4a6e;
+  font-weight: 500;
+  font-size: 0.875rem;
+}
+
+/* Selected row styling */
+.complaint-row-main.selected {
+  background: #eff6ff !important;
+  border-left: 3px solid #3b82f6;
+}
+
+.complaint-row-main.selected:hover {
+  background: #dbeafe !important;
+}

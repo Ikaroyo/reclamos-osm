@@ -1,0 +1,206 @@
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem;
+  }
+  
+  .nav-brand h1 {
+    font-size: 1.1rem;
+  }
+  
+  .admin-badge {
+    font-size: 0.65rem;
+    padding: 0.2rem 0.5rem;
+  }
+
+  /* Show burger menu */
+  .burger-menu {
+    display: flex;
+  }
+
+  /* Hide nav links by default on mobile */
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    background: #ffffff;
+    flex-direction: column;
+    gap: 0;
+    padding: 5rem 1rem 2rem 1rem;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+    transition: right 0.3s ease;
+    z-index: 1000;
+    overflow-y: auto;
+  }
+
+  /* Show nav links when menu is open */
+  .nav-links.mobile-open {
+    right: 0;
+  }
+
+  /* Show overlay when menu is open */
+  .nav-links.mobile-open ~ .nav-overlay {
+    display: block;
+  }
+
+  .nav-overlay {
+    display: none;
+  }
+
+  /* Mobile navigation button styles */
+  .nav-links button {
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+    text-align: left;
+    border-radius: 8px;
+    font-size: 1rem;
+    justify-content: flex-start;
+    gap: 1rem;
+  }
+
+  .nav-links button:hover {
+    background: #f3f4f6;
+  }
+
+  .nav-links button.active {
+    background: #1a1a1a;
+    color: #ffffff;
+  }
+
+  .logout-button {
+    margin-top: 1rem;
+    background: linear-gradient(135deg, #e74c3c, #c0392b) !important;
+    color: white !important;
+    border-radius: 8px;
+  }
+
+  .logout-button:hover {
+    background: linear-gradient(135deg, #c0392b, #a93226) !important;
+  }
+
+  .nav-text {
+    font-weight: 500;
+  }
+
+  .icon {
+    margin-right: 0.5rem;
+    font-size: 1.1em;
+    opacity: 0.8;
+  }
+
+  /* Form responsive adjustments */
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .individual-exports {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .export-label {
+    margin-bottom: 0.5rem;
+    margin-right: 0;
+  }
+
+  /* Floating user info responsive adjustments */
+  .floating-user-info {
+    bottom: 15px;
+    right: 15px;
+  }
+  
+  .user-avatar {
+    width: 45px;
+    height: 45px;
+  }
+  
+  .user-initial {
+    font-size: 16px;
+  }
+  
+  .admin-crown {
+    width: 20px;
+    height: 20px;
+    font-size: 14px;
+    top: -6px;
+    right: -6px;
+  }
+  
+  .user-tooltip {
+    min-width: 160px;
+    bottom: 55px;
+    right: -10px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .form-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1025px) {
+  .form-row {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 0.75rem;
+  }
+  
+  .nav-brand h1 {
+    font-size: 1rem;
+  }
+
+  .nav-links {
+    width: 100%;
+    right: -100%;
+  }
+
+  .nav-links button {
+    padding: 0.875rem;
+    font-size: 0.9rem;
+  }
+
+  .burger-menu {
+    padding: 0.5rem;
+  }
+
+  .burger-menu span {
+    width: 24px;
+    height: 2.5px;
+  }
+
+  .burger-menu.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .burger-menu.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+
+  .floating-user-info {
+    bottom: 10px;
+    right: 10px;
+  }
+  
+  .user-avatar {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .user-initial {
+    font-size: 14px;
+  }
+  
+  .user-tooltip {
+    min-width: 140px;
+    font-size: 0.8rem;
+    padding: 0.5rem 0.75rem;
+  }
+}

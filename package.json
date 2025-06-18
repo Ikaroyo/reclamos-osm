@@ -1,0 +1,33 @@
+{
+  "name": "reclamos-app",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "homepage": "https://Ikaroyo.github.io/reclamos-osm",
+  "scripts": {
+    "predeploy": "pnpm run build",
+    "deploy": "gh-pages -d dist -r https://github.com/Ikaroyo/reclamos-osm.git",
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.39.0",
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^3.0.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "@types/jspdf": "^2.0.0",
+    "@types/xlsx": "^0.0.36",
+    "@vitejs/plugin-react": "^4.0.3",
+    "gh-pages": "^6.3.0",
+    "typescript": "^5.0.2",
+    "vite": "^4.4.5"
+  }
+}

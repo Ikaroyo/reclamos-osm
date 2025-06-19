@@ -203,7 +203,7 @@ export default function App() {
     <div className="app">
       <nav className="navbar">
         <div className="nav-brand">
-          <img src="/img/logo.png" alt="Logo" className="nav-logo" />
+          <img src="/reclamos-osm/img/logo.png" alt="Logo" className="nav-logo" />
           <h1>Sistema de Reclamos</h1>
           {isAdmin && <span className="admin-badge">Admin</span>}
         </div>

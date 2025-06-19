@@ -227,7 +227,7 @@ export default function ComplaintForm() {
 
   return (
     <div className="complaint-form">
-      <h2><span className="icon">📄</span> Nuevo Reclamo</h2>
+      <h2><img src="/reclamos-osm/img/logo.png" alt="Logo" className="page-logo" /> Nuevo Reclamo</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-row">
           <div>

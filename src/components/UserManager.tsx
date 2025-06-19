@@ -283,7 +283,7 @@ export default function UserManager() {
   return (
     <div className="user-manager">
       <div className="header">
-        <h2><span className="icon">👥</span> Gestión de Usuarios</h2>
+        <h2><img src="/reclamos-osm/img/logo.png" alt="Logo" className="page-logo" /> Gestión de Usuarios</h2>
         <button 
           className="btn btn-primary"
           onClick={() => setShowAddForm(!showAddForm)}

@@ -187,6 +187,9 @@ export default function Auth() {
   return (
     <div className="auth-container">
       <div className="auth-card">
+        <div className="auth-logo">
+          <img src="/img/logo.png" alt="Sistema de Reclamos" className="auth-logo-img" />
+        </div>
         <h1><span className="icon">📋</span> Sistema de Reclamos</h1>
         <h2>Iniciar Sesión</h2>
         

@@ -413,6 +413,7 @@
   border-radius: 12px;
   font-size: 12px;
   font-weight: bold;
+  margin-left: 5px;
 }
 
 .user-badge {
@@ -644,6 +645,72 @@
 
 .btn .icon {
   font-size: 1rem;
+}
+
+/* Logo styles */
+.nav-logo {
+  height: 25px;
+  width: auto;
+  margin-right: 0.75rem;
+  margin-left: 0.75rem;
+  object-fit: contain;
+}
+
+.page-logo {
+  height: 24px;
+  width: auto;
+  margin-right: 0.5rem;
+  object-fit: contain;
+  vertical-align: middle;
+}
+
+.auth-logo {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.auth-logo-img {
+  height: 80px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+}
+
+/* Navbar brand alignment */
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.nav-brand h1 {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Page headers with logo */
+h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Responsive logo adjustments */
+@media (max-width: 768px) {
+  .nav-logo {
+    height: 32px;
+  }
+  
+  .page-logo {
+    height: 20px;
+  }
+  
+  .auth-logo-img {
+    height: 60px;
+  }
 }
 
 /* Distributor Manager Specific Styles */

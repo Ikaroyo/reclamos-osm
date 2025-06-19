@@ -631,7 +631,7 @@ export default function ComplaintsList() {
 
   return (
     <div className="complaints-list">
-      <h2><img src="/reclamos-osm/img/logo.png" alt="Logo" className="page-logo" /> Lista de Reclamos</h2>
+      <h2><span className="icon">📋</span> Lista de Reclamos</h2>
       
       {/* Excel Import/Export Section */}
       <div className="excel-section">

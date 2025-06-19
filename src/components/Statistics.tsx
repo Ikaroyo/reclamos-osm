@@ -284,7 +284,7 @@ export default function Statistics() {
 
   return (
     <div className="statistics">
-      <h2><img src="/reclamos-osm/img/logo.png" alt="Logo" className="page-logo" /> Estadísticas de Reclamos</h2>
+      <h2><span className="icon">📊</span> Estadísticas de Reclamos</h2>
       
       <div className="filters">
         <div>

@@ -613,7 +613,7 @@ export default function DistributorManager() {
 
   return (
     <div className="distributor-manager">
-      <h2><img src="/reclamos-osm/img/logo.png" alt="Logo" className="page-logo" /> Gestión de Repartidores</h2>
+      <h2><span className="icon">👥</span> Gestión de Repartidores</h2>
       
       {/* Excel Import/Export Section */}
       <div className="excel-section">

@@ -96,21 +96,33 @@ export default function Statistics() {
     return total
   }
 
-  const exportRepartidorToExcel = (repartidor: string) => {
+  const exportRepartidorToExcel = async (repartidor: string) => {
     const workbook = XLSX.utils.book_new()
     const calles = statistics[repartidor] || {}
+
+    // Get current session for user email
+    let userEmail = 'Usuario Desconocido'
+    try {
+      const { data: { user } } = await supabase.auth.getUser()
+      if (user && user.email) {
+        userEmail = user.email
+      }
+    } catch (e) {
+      // ignore error, keep default
+    }
     
     const distributorData = [
       [`REPORTE INDIVIDUAL - ${repartidor.toUpperCase()}`],
       [''],
       [`Periodo: ${months[selectedMonth - 1]} ${selectedYear}`],
       [`Total de Reclamos: ${getTotalForRepartidor(repartidor)}`],
-      [`Generado: ${new Date().toLocaleDateString()}`],
+      [`Generado: ${new Date().toLocaleDateString()} a las ${new Date().toLocaleTimeString()}`],
+      [`Generado por: ${userEmail}`],
       [''],
-      ['Calle', 'Número', 'Cantidad', 'Cuentas', 'Observaciones', 'Detalles']
+      ['Cuentas', 'Calle', 'Número', 'Cantidad', 'Observaciones', 'Detalles']
     ]
 
-    // Add detailed data with empty cells for repeated streets
+    // Add detailed data with split accounts and empty row separators
     Object.entries(calles).forEach(([calle, numeros]) => {
       let isFirstRowForStreet = true
       Object.entries(numeros).forEach(([numero, data]) => {
@@ -125,22 +137,25 @@ export default function Statistics() {
           .filter(obs => obs && obs.trim())
           .join('; ')
 
-        const cuentas = data.cuentas.join(', ')
-
         const detalles = addressComplaints
           .map(c => `${c.mail ? `Email: ${c.mail}` : ''}${c.telefono ? ` | Tel: ${c.telefono}` : ''}`)
           .filter(detail => detail.trim())
           .join(' || ')
 
-        // Only show street name for the first row of each street
-        distributorData.push([
-          isFirstRowForStreet ? calle : '', 
-          numero, 
-          data.count.toString(), 
-          cuentas, 
-          observaciones, 
-          detalles
-        ])
+        // Split accounts into separate rows
+        data.cuentas.forEach((cuenta, cuentaIndex) => {
+          distributorData.push([
+            cuenta,
+            (isFirstRowForStreet && cuentaIndex === 0) ? calle : '', 
+            (cuentaIndex === 0) ? numero : '', 
+            (cuentaIndex === 0) ? data.count.toString() : '', 
+            (cuentaIndex === 0) ? observaciones : '', 
+            (cuentaIndex === 0) ? detalles : ''
+          ])
+        })
+        
+        // Add empty row as separator after each street number group
+        distributorData.push(['', '', '', '', '', ''])
         
         isFirstRowForStreet = false
       })
@@ -148,16 +163,16 @@ export default function Statistics() {
 
     // Add summary
     distributorData.push(['', '', '', '', '', ''])
-    distributorData.push(['TOTAL GENERAL', '', getTotalForRepartidor(repartidor).toString(), '', '', ''])
+    distributorData.push(['TOTAL GENERAL', '', '', getTotalForRepartidor(repartidor).toString(), '', ''])
 
     const sheet = XLSX.utils.aoa_to_sheet(distributorData)
     
     // Enhanced styling
     sheet['!cols'] = [
+      { width: 25 }, // Cuentas
       { width: 30 }, // Calle
       { width: 10 }, // Número
       { width: 12 }, // Cantidad
-      { width: 25 }, // Cuentas
       { width: 40 }, // Observaciones
       { width: 60 }  // Detalles
     ]
@@ -190,18 +205,10 @@ export default function Statistics() {
     
     // Style the summary sheet
     summarySheet['!cols'] = [{ width: 25 }, { width: 15 }]
-    
-    // Add styles to title
-    if (summarySheet['A1']) {
-      summarySheet['A1'].s = {
-        font: { bold: true, sz: 16 },
-        alignment: { horizontal: 'center' }
-      }
-    }
 
     XLSX.utils.book_append_sheet(workbook, summarySheet, 'Resumen')
 
-    // Create individual sheets for each distributor with empty cells for repeated streets
+    // Create individual sheets for each distributor with empty row separators
     Object.entries(statistics).forEach(([repartidor, calles]) => {
       const distributorData = [
         [`RECLAMOS - ${repartidor.toUpperCase()}`],
@@ -209,10 +216,10 @@ export default function Statistics() {
         [`Periodo: ${months[selectedMonth - 1]} ${selectedYear}`],
         [`Total de Reclamos: ${getTotalForRepartidor(repartidor)}`],
         [''],
-        ['Calle', 'Número', 'Cantidad', 'Cuentas', 'Observaciones']
+        ['Cuentas', 'Calle', 'Número', 'Cantidad', 'Observaciones']
       ]
 
-      // Add data rows with empty cells for repeated streets
+      // Add data rows with split accounts and empty row separators
       Object.entries(calles).forEach(([calle, numeros]) => {
         let isFirstRowForStreet = true
         Object.entries(numeros).forEach(([numero, data]) => {
@@ -228,16 +235,19 @@ export default function Statistics() {
             .filter(obs => obs && obs.trim())
             .join('; ')
 
-          const cuentas = data.cuentas.join(', ')
-
-          // Only show street name for the first row of each street
-          distributorData.push([
-            isFirstRowForStreet ? calle : '', 
-            numero, 
-            data.count.toString(), 
-            cuentas, 
-            observaciones
-          ])
+          // Split accounts into separate rows
+          data.cuentas.forEach((cuenta, cuentaIndex) => {
+            distributorData.push([
+              cuenta,
+              (isFirstRowForStreet && cuentaIndex === 0) ? calle : '', 
+              (cuentaIndex === 0) ? numero : '', 
+              (cuentaIndex === 0) ? data.count.toString() : '', 
+              (cuentaIndex === 0) ? observaciones : ''
+            ])
+          })
+          
+          // Add empty row as separator after each street number group
+          distributorData.push(['', '', '', '', ''])
           
           isFirstRowForStreet = false
         })
@@ -245,16 +255,16 @@ export default function Statistics() {
 
       // Add total row
       distributorData.push(['', '', '', '', ''])
-      distributorData.push(['TOTAL GENERAL', '', getTotalForRepartidor(repartidor).toString(), '', ''])
+      distributorData.push(['TOTAL GENERAL', '', '', getTotalForRepartidor(repartidor).toString(), ''])
 
       const distributorSheet = XLSX.utils.aoa_to_sheet(distributorData)
       
       // Style the distributor sheet
       distributorSheet['!cols'] = [
+        { width: 25 }, // Cuentas
         { width: 30 }, // Calle
         { width: 10 }, // Número
         { width: 12 }, // Cantidad
-        { width: 25 }, // Cuentas
         { width: 50 }  // Observaciones
       ]
 
